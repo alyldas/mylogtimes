@@ -1,11 +1,8 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   './index.html',
-  './style.css',
   './script.js',
-  'https://www.toni-develops.com/external-files/examples/service-workers/delayed-response.php',
   'https://code.jquery.com/jquery-3.3.1.min.js'
-
 ];
 
 self.addEventListener('install', event => {
