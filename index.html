@@ -1,22 +1,36 @@
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>title</title>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <!-- <script src="script.js"></script> -->
-</head>
+<!DOCTYPE html>
+<html>
 
 <body>
-  My fancy new site v3!
-  <hr>
-  <div id="container"></div>
+
+  <p>Count numbers: <output id="result"></output></p>
+  <button onclick="startWorker()">Start Worker</button>
+  <button onclick="stopWorker()">Stop Worker</button>
+
+  <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+
   <script>
-    setInterval(function () {
-      $('#container').append(new Date() + '<br>');
-    }, 1000);
+    var w;
+
+    function startWorker() {
+      if (typeof (Worker) !== "undefined") {
+        if (typeof (w) == "undefined") {
+          w = new Worker("demo_workers.js");
+        }
+        w.onmessage = function (event) {
+          document.getElementById("result").innerHTML = event.data;
+        };
+      } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+      }
+    }
+
+    function stopWorker() {
+      w.terminate();
+      w = undefined;
+    }
   </script>
+
 </body>
 
 </html>
