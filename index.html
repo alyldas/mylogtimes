@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-  </head>
 
-  <body>
-    <div id="app"></div>
+<head>
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+</head>
 
-    <script src="src/index.js"></script>
-  </body>
+<body>
+  <div id="app">Test</div>
+</body>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js");
-      console.log("Service Worker installed.");
-    } else {
-      console.log("Service Worker functionality not supported.");
-    }
-  </script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+    console.log("Service Worker installed.");
+  } else {
+    console.log("Service Worker functionality not supported.");
+  }
+</script>
+
 </html>
