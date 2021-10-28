@@ -3,7 +3,7 @@
 console.log("Service Worker really installed.");
 
 self.addEventListener("fetch", function (event) {
-  console.log("Service Worker really installed.");
+  console.log("Service Worker really really installed.");
 
   var connection =
     navigator.connection ||
