@@ -1,4 +1,4 @@
-console.log('v5');
+console.log('v6');
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -15,7 +15,6 @@ if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.ready.then(function (registration) {
                     registration.showNotification('Vibration Sample', {
                         body: 'Buzz! Buzz!',
-                        icon: '../images/touch/chrome-touch-icon-192x192.png',
                         vibrate: [200, 100, 200, 100, 200, 100, 200],
                         tag: 'vibration-sample'
                     });
