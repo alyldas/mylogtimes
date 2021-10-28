@@ -13,7 +13,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
+        document.write('Opened cache');
         cache.addAll(urlsToCache);
       })
   );
@@ -21,7 +21,7 @@ self.addEventListener('install', event => {
 
 
 self.addEventListener('fetch', event => {
-  console.log("(9)served from service worker: ", event.request.url);
+  document.write("(9)served from service worker: ", event.request.url);
   // serve as soon as possible from cache
   event.respondWith(fromCache(event.request));
   // update cache
