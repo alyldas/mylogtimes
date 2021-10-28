@@ -9,6 +9,9 @@
 
   <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
 
+  <button onclick="getCount()">Get count</button>
+  <div id="result"></div>
+
   <script>
     var w;
 
@@ -28,6 +31,10 @@
     function stopWorker() {
       w.terminate();
       w = undefined;
+    }
+
+    function getCount() {
+      document.getElementById("result").innerHTML = localStorage.getItem("timeCount");
     }
   </script>
 
