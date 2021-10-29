@@ -7,11 +7,11 @@
   <button onclick="startWorker()">Start Worker</button>
   <button onclick="stopWorker()">Stop Worker</button>
 
-  <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p><button
-    onclick="getCount()">Get count</button>
+  <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
 
   <button onclick="getCount()">Get count</button>
-  <button onclick="unregisterServiceWorker()">Stop Service Worker</button>
+  <button onclick="registerServiceWorker()">Register Service Worker</button>
+  <button onclick="unregisterServiceWorker()">Unregister Service Worker</button>
   <div id="result"></div>
 
   <script>
@@ -41,21 +41,23 @@
   </script>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(function (reg) {
+    function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').then(function (reg) {
 
-        if (reg.installing) {
-          console.log('Service worker installing');
-        } else if (reg.waiting) {
-          console.log('Service worker installed');
-        } else if (reg.active) {
-          console.log('Service worker active');
-        }
+          if (reg.installing) {
+            console.log('Service worker installing');
+          } else if (reg.waiting) {
+            console.log('Service worker installed');
+          } else if (reg.active) {
+            console.log('Service worker active');
+          }
 
-      }).catch(function (error) {
-        // registration failed
-        console.log('Registration failed with ' + error);
-      });
+        }).catch(function (error) {
+          // registration failed
+          console.log('Registration failed with ' + error);
+        });
+      }
     }
 
     function unregisterServiceWorker() {
