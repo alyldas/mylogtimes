@@ -23,7 +23,6 @@
         w.onmessage = function (event) {
           document.getElementById("result").innerHTML = event.data;
         };
-        w.postMessage('ping!');
       } else {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
       }
@@ -35,7 +34,7 @@
     }
 
     function getCount() {
-      document.getElementById("result").innerHTML = localStorage.getItem("timeCount");
+      w.postMessage('ping!');
     }
   </script>
 
