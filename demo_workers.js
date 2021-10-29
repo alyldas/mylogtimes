@@ -2,7 +2,7 @@
 let db;
 
 // In the following line, you should include the prefixes of implementations you want to test.
-window.indexedDB = typeof window == 'object' ? window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB : indexedDB || mozIndexedDB || webkitIndexedDB || msIndexedDB;
+let indexedDB = typeof window == 'object' ? window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB : indexedDB || mozIndexedDB || webkitIndexedDB || msIndexedDB;
 // DON'T use "var indexedDB = ..." if you're not in a function.
 // Moreover, you may need references to some window.IDB* objects:
 const IDBTransaction = typeof window == 'object' ? window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction : IDBTransaction || webkitIDBTransaction || msIDBTransaction;
