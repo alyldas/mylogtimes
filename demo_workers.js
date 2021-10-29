@@ -2,15 +2,15 @@
 let db;
 
 // In the following line, you should include the prefixes of implementations you want to test.
-self.indexedDB = self.indexedDB || self.mozIndexedDB || self.webkitIndexedDB || self.msIndexedDB;
+window.indexedDB = typeof window == 'object' ? window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB : indexedDB || mozIndexedDB || webkitIndexedDB || msIndexedDB;
 // DON'T use "var indexedDB = ..." if you're not in a function.
-// Moreover, you may need references to some self.IDB* objects:
-self.IDBTransaction = self.IDBTransaction || self.webkitIDBTransaction || self.msIDBTransaction;
-self.IDBKeyRange = self.IDBKeyRange || self.webkitIDBKeyRange || self.msIDBKeyRange;
-// (Mozilla has never prefixed these objects, so we don't need self.mozIDB*)
+// Moreover, you may need references to some window.IDB* objects:
+const IDBTransaction = typeof window == 'object' ? window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction : IDBTransaction || webkitIDBTransaction || msIDBTransaction;
+const IDBKeyRange = typeof window == 'object' ? window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange : IDBKeyRange || webkitIDBKeyRange || msIDBKeyRange;
+// (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)
 
 // Let us open our database
-const DBOpenRequest = self.indexedDB.open("toDoList", 4);
+const DBOpenRequest = indexedDB.open("toDoList", 4);
 
 // these two event handlers act on the database being opened successfully, or not
 DBOpenRequest.onerror = function (event) {
