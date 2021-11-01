@@ -9,10 +9,7 @@
 
   <p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
 
-  <button onclick="getCount()">Get count</button>
-  <button onclick="registerServiceWorker()">Register Service Worker</button>
-  <button onclick="unregisterServiceWorker()">Unregister Service Worker</button>
-  <div id="result"></div>
+  <pre id="log">Log:</pre>
 
   <script>
     var w;
@@ -23,7 +20,8 @@
           w = new Worker("demo_workers.js");
         }
         w.onmessage = function (event) {
-          document.getElementById("result").innerHTML = event.data;
+          // document.getElementById("result").innerHTML = event.data;
+          document.getElementById("log").textContent += '\n' + event.data;
         };
       } else {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
@@ -33,39 +31,6 @@
     function stopWorker() {
       w.terminate();
       w = undefined;
-    }
-
-    function getCount() {
-      w.postMessage('ping!');
-    }
-  </script>
-
-  <script>
-    function registerServiceWorker() {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(function (reg) {
-
-          if (reg.installing) {
-            console.log('Service worker installing');
-          } else if (reg.waiting) {
-            console.log('Service worker installed');
-          } else if (reg.active) {
-            console.log('Service worker active');
-          }
-
-        }).catch(function (error) {
-          // registration failed
-          console.log('Registration failed with ' + error);
-        });
-      }
-    }
-
-    function unregisterServiceWorker() {
-      navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-          registration.unregister()
-        }
-      })
     }
   </script>
 
